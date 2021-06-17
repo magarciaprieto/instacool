@@ -7,6 +7,7 @@ const style = (block: boolean) => ({
   borderRadius: '4px',
   color: '#fff',
   width: block ? '100%' : undefined,
+  marginBottom: '10px',
 })
 
 interface IButtonProps {

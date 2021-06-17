@@ -8,6 +8,7 @@ import Input from './components/Input';
 import Button from './components/Button';
 import Title from './components/Title';
 import Link from './components/Link';
+import Center from './components/Center';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
       <Input placeholder='Correo' label='Correo' />
       <Input placeholder='Contraseña' label='Contraseña' />
       <Button block={true}>Enviar</Button>
-      <Link>Ir al registro</Link>
+      <Center>
+        <Link>Ir al registro</Link>
+      </Center>
     </Card>
   </Container>
   );
