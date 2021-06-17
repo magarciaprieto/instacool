@@ -7,6 +7,7 @@ import Container from './components/Container';
 import Input from './components/Input';
 import Button from './components/Button';
 import Title from './components/Title';
+import Link from './components/Link';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Input placeholder='Correo' label='Correo' />
       <Input placeholder='Contraseña' label='Contraseña' />
       <Button>Enviar</Button>
+      <Link>Ir al registro</Link>
     </Card>
   </Container>
   );
