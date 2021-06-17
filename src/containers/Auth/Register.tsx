@@ -11,7 +11,7 @@ import Center from '../../components/Center';
 
 export default function Register() {
  return (
-  <Container>
+  <Container center={true}>
     <Card>
       <Title>Registro</Title>
       <Input placeholder='Correo' label='Correo' />

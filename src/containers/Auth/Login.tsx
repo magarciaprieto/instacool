@@ -10,7 +10,7 @@ import Center from '../../components/Center';
 
 export default function Login() {
  return (
-  <Container>
+  <Container center={true}>
     <Card>
       <Title>Iniciar sesión</Title>
       <Input placeholder='Correo' label='Correo' />

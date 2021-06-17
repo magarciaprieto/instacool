@@ -1,22 +1,23 @@
 import React from 'react';
 
-const style = {
+const style = (center: boolean) => ({
   backgroundColor: '#eee',
   padding: '10px 15px',
   height: 'calc(100vh - 20px)',
   width: 'calc(100vw - 30px)',
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
+  justifyContent: center? 'center': undefined,
+  alignItems: center ? 'center': undefined,
+})
 
 interface IContainerProps {
   children: any
+  center?: boolean
 }
 
-export default function Content ({children}: IContainerProps) {
+export default function Content ({children, center = false}: IContainerProps) {
   return (
-    <div style={style}>
+    <div style={style(center)}>
       {children}
     </div>
   );
