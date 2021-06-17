@@ -1,16 +1,21 @@
 import React from 'react';
 
-const style = {
+const style = (block: boolean) => ({
   backgroundColor: '#00D1B2',
   padding: '10px 15px',
   border: '0px',
   borderRadius: '4px',
   color: '#fff',
+  width: block ? '100%' : undefined,
+})
+
+interface IButtonProps {
+  block?: boolean
+  children: string
 }
 
-
-export default function Button ({...props}) {
+export default function Button ({block = false, ...props}: IButtonProps) {
   return (
-    <button {...props} style={style} />
+    <button {...props} style={style(block)} />
   );
 }
