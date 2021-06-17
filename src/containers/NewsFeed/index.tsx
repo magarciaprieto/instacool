@@ -8,6 +8,9 @@ export default function NewsFeed() {
     <Container>
       <div style={{ margin: '0 auto' }}>
         <Post image='http://placekitten.com/300/200' />
+        <Post image='http://placekitten.com/300/200' />
+        <Post image='http://placekitten.com/300/200' />
+        <Post image='http://placekitten.com/300/200' />
       </div>
     </Container>
   )

@@ -8,7 +8,8 @@ const style = (center: boolean) => ({
   display: 'flex',
   justifyContent: center? 'center': undefined,
   alignItems: center ? 'center': undefined,
-})
+  flexDirection: 'column',
+}) as React.CSSProperties
 
 interface IContainerProps {
   children: any
