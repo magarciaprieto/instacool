@@ -10,11 +10,11 @@ const style = {
   alignItems: 'center',
 }
 
-interface IContentProps {
+interface IContainerProps {
   children: any
 }
 
-export default function Content ({children}: IContentProps) {
+export default function Content ({children}: IContainerProps) {
   return (
     <div style={style}>
       {children}
