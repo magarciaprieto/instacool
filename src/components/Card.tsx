@@ -7,7 +7,7 @@ const style = {
 }
 
 interface ICardProps {
-  children: string
+  children: any
 }
 
 export default function Card ({children}: ICardProps) {
