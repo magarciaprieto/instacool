@@ -1,11 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
+
 //Components
 import Card from '../../components/Card';
 import Container from '../../components/Container';
 import LoginForm from "../../components/LoginForm";
 import Title from '../../components/Title';
 
-export default function Login() {
+import { ILogin, login } from '../../ducks/Users'
+
+function Login() {
  return (
   <Container center={true}>
     <Card>
@@ -15,3 +19,10 @@ export default function Login() {
   </Container>
  )
 }
+
+const mapStateToProps = (state: any) => state
+const mapDispatchToProps = (dispatch: any) => ({
+  login: (payload: ILogin) => dispatch(login(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyAhWMVwJY7WEUVE5yabz-Nz4UuYNq4t2ys",
     authDomain: "instacool-435c8.firebaseapp.com",
