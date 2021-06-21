@@ -1,3 +1,4 @@
+//Libraries + Dependencies
 import React from "react";
 import { connect } from "react-redux";
 
@@ -7,14 +8,19 @@ import Container from '../../components/Container';
 import LoginForm from "../../components/LoginForm";
 import Title from '../../components/Title';
 
-import { ILogin, login } from '../../ducks/Users'
+//Interfaces + Thunks
+import { ILogin, login as loginThunk } from '../../ducks/Users'
 
-function Login() {
+interface ILoginProps {
+  login: (a: ILogin) => void
+}
+
+function Login( {login}: ILoginProps) {
  return (
   <Container center={true}>
     <Card>
       <Title>Iniciar sesión</Title>
-      <LoginForm />
+      <LoginForm onSubmit={login} />
     </Card>
   </Container>
  )
@@ -22,7 +28,7 @@ function Login() {
 
 const mapStateToProps = (state: any) => state
 const mapDispatchToProps = (dispatch: any) => ({
-  login: (payload: ILogin) => dispatch(login(payload))
+  login: (payload: ILogin) => dispatch(loginThunk(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

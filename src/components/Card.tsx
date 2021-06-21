@@ -13,7 +13,7 @@ interface ICardProps {
 export default function Card ({children}: ICardProps) {
   return (
     <div style={style}>
-      {children}
+      {children} 
     </div>
   );
 }
