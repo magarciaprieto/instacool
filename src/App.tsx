@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
+import services from './services';
 
 //Components
 import Login from './containers/Auth/Login';
@@ -9,7 +10,19 @@ import NewsFeed from './containers/NewsFeed';
 import Navbar from './components/Navbar';
 import Profile from './containers/Profile';
 
+
+
 function App() {
+
+  const { auth } = services;
+
+  useEffect( () =>
+    auth.onAuthStateChanged( user => {
+      console.log(user)
+    })
+  )
+ 
+
   return (
     <div> 
       <Route exact={true} path='/' component={Login} />
