@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import services from './services';
@@ -14,17 +14,19 @@ import Profile from './containers/Profile';
 
 function App() {
 
+  const [loading, setLoading] = useState(true);
+
   const { auth } = services;
 
   useEffect( () =>
     auth.onAuthStateChanged( user => {
       console.log(user)
+      setLoading(false)
     })
-  )
+  );
  
-
   return (
-    <div> 
+    loading ? <span> Loading </span> : <div> 
       <Route exact={true} path='/' component={Login} />
       <Route exact={true} path='/register' component={Register} />
       <Route path='/app/' component={Navbar} />
