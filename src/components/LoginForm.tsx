@@ -10,7 +10,7 @@ import { ILogin } from "../ducks/Users";
 function LoginForm ( { handleSubmit }: InjectedFormProps<ILogin> ) {
   return (
     <form onSubmit={handleSubmit}>
-      <Field label='Correo' placeholder='Correo' name='email' type='email' component={Input} />
+      <Field label='Correo' placeholder='Correo' name='email' type='email' component={Input} /> {/* Redux-form demands to receive Stateless components (i.e. Input) */}
       <Field label='Contraseña' placeholder='Contraseña' name='password' type='password' component={Input} />
       <Button block={true}>Enviar</Button>
       <Center>

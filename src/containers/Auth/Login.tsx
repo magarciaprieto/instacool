@@ -20,7 +20,7 @@ function Login( {login}: ILoginProps) {
   <Container center={true}>
     <Card>
       <Title>Iniciar sesión</Title>
-      <LoginForm onSubmit={login} />
+      <LoginForm onSubmit={login} /> {/* Problem solved with:  https://its-me-natalie.medium.com/connecting-redux-form-with-react-redux-e83be446344c */}
     </Card>
   </Container>
  )

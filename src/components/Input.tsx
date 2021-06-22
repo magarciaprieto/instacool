@@ -1,4 +1,5 @@
 import React from 'react';
+import { WrappedFieldProps } from 'redux-form';
 
 const style = {
   backgroundColor: '#fff',
@@ -22,11 +23,11 @@ interface IInputProps {
   label: string
 }
 
-export default function Input ({label, ...props}: IInputProps) {
+export default function Input ({label, ...props}: IInputProps & WrappedFieldProps) {
   return (
     <div>
       <span style={spanStyle}>{label}</span>
-      <input {...props} style={style} />
+      <input {...props} {...props.input} style={style} /> {/* Se agrega {...props.input} para no recibir error de que al correo no se le pasa un string, aunq lo sea */}
     </div>
   );
 }
