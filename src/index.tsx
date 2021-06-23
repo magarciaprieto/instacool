@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 //Redux + Router + Firebase services
-import {BrowserRouter as Router} from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import services from './services';
+import createHistory from 'history/createBrowserHistory'
+
 //Reducer + Thunk
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
@@ -18,10 +21,12 @@ const store = createStore(combineReducers({
   form: formReducer,
 }), applyMiddleware(thunk.withExtraArgument(services)));
 
+const history = createHistory();
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
+    <Router history={history} >
+      <App history={history} />
     </Router>
   </Provider>,
   document.getElementById('root')
