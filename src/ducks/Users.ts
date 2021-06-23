@@ -1,6 +1,5 @@
 import { Dispatch } from "redux";
 import { IServices } from '../services';
-import { db } from "../services/firebase";
 
 export interface ILogin {
   email: string
