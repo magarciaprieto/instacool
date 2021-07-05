@@ -16,7 +16,10 @@ interface INewsFeedProps {
 
 function NewsFeed ({ fetchPosts, fetched, ...props}: INewsFeedProps) {
 
-  if (!fetched) return fetchPosts();
+  console.log(fetched);
+  if(!fetched) {
+    fetchPosts();
+  }
 
   return (
     <Container>
