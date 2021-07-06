@@ -58,12 +58,29 @@ export default function reducer( state = initialState, action: AnyAction) {
 }
 
 export const fetchPosts = () =>
-  async (dispatch: Dispatch, getState: () => any, { db } : IServices ) => {
+  async (dispatch: Dispatch, getState: () => any, { db, storage } : IServices ) => {
     dispatch(fetchStart())
     try {
+      //Fetch data from posts collection and store them in a "posts" object
       const snaps = await db.collection('posts').get();
       const posts: any = {};
       snaps.forEach( x => posts[x.id] = x.data());
+
+      //Fetch URL from posts collection using posts ID/keys
+      const imgIds = await Promise.all(Object.keys(posts).map(async x => {
+        const ref = storage.ref(`posts/${x}.jpg`) //Returns a refernce for the given path, its not the url.
+        const url = await ref.getDownloadURL() //Now we get the URL using .getDownloadURL method of Firebase.
+        return [x, url] // [ID, URL]
+      }))
+
+      const keyedImages: any = {}
+      imgIds.forEach( x => keyedImages[x[0]] = x[1])
+      //Add imageURL property to posts
+      Object.keys(posts).forEach( x => posts[x] = {
+        ...posts[x],
+        imageURL: keyedImages[x]
+      })
+      console.log(posts)
       dispatch(fetchSuccess(posts));
     } catch(e) {
       console.log(e)

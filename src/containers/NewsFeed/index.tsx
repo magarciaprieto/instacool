@@ -14,17 +14,19 @@ interface INewsFeedProps {
   fetching: boolean
 }
 
-function NewsFeed ({ fetchPosts, fetched, ...props}: INewsFeedProps) {
+function NewsFeed ({ data, fetchPosts, fetched, ...props}: INewsFeedProps) {
 
-  console.log(fetched);
+  console.log({...props});
   if(!fetched) {
     fetchPosts();
   }
 
   return (
     <Container>
-      <div style={{ margin: '0 auto' }}><Post image='http://placekitten.com/300/200' /></div>
-      <div style={{ margin: '0 auto' }}><Post image='http://placekitten.com/300/200' /></div>
+      {Object.keys(data).map( x => {
+        const post = data[x];
+        return <div style={{ margin: '0 auto' }}><Post image='http://placekitten.com/300/200' /></div>
+      })}
     </Container>
   )
 }
