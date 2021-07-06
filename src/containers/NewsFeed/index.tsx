@@ -13,20 +13,36 @@ interface INewsFeedProps {
   fetchPosts: () => void 
   fetched: boolean
   fetching: boolean
+  like: (a: string) => void
+  share: (a: string) => void
 }
 
-function NewsFeed ({ data, fetchPosts, fetched, ...props}: INewsFeedProps) {
+function NewsFeed ({ like, share, data, fetchPosts, fetched, ...props}: INewsFeedProps) {
 
-  console.log({...props});
   if(!fetched) {
     fetchPosts();
+  }
+
+  const handleLike = (id: string) => () => {
+    like(id)
+  }
+  const handleShare = (id: string) => () => {
+    share(id)
   }
 
   return (
     <Container>
       {Object.keys(data).map( x => {
         const post = data[x];
-        return <div key={x} style={{ margin: '0 auto' }}><Post image={post.imageURL} /></div>
+        return (
+          <div key={x} style={{ margin: '0 auto' }}>
+            <Post 
+              like={handleLike(x)} 
+              share={handleShare(x)} 
+              image={post.imageURL} 
+            />
+          </div>
+        )
       })}
     </Container>
   )

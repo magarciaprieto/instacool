@@ -81,11 +81,20 @@ export const fetchPosts = () =>
         ...posts[x],
         imageURL: keyedImages[x]
       })
-      console.log(posts)
       dispatch(fetchSuccess(posts));
     } catch(e) {
       console.log(e)
       dispatch(fetchError(e))
     }
   }
+
+  export const like = (id: string) =>
+    async (dispatch: Dispatch, getState: () => any, { db }: IServices) => {
+      console.log(id)
+    }
+
+  export const share = (id: string) =>
+    async (dispatch: Dispatch, getState: () => any, { db }: IServices) => {
+      console.log(id)
+    }
  

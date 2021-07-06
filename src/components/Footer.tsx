@@ -18,11 +18,16 @@ const styles = {
   }
 }
 
-export default function Footer() {
+interface IFooterProps {
+  like: () => void
+  share: () => void
+}
+
+export default function Footer({ like, share }: IFooterProps) {
   return (
     <div style={styles.footer}>
-      <div style={styles.button as React.CSSProperties}><FontAwesomeIcon icon={faThumbsUp} /> Like </div>
-      <div style={styles.button as React.CSSProperties}><FontAwesomeIcon icon={faShare} /> Compartir </div>
+      <div onClick={like} style={styles.button as React.CSSProperties}><FontAwesomeIcon icon={faThumbsUp} /> Like </div>
+      <div onClick={share} style={styles.button as React.CSSProperties}><FontAwesomeIcon icon={faShare} /> Compartir </div>
     </div>
   )
 }

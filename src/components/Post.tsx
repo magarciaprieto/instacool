@@ -12,13 +12,15 @@ const style = {
 
 interface IPostProps {
   image: string
+  like: () => void
+  share: () => void
 }
 
-export default function Post ({image}: IPostProps) {
+export default function Post ({image, like, share}: IPostProps) {
   return (
     <div style={style}>
       <img style={{width: '300px', height: '200px'}} src={image} alt='' />
-      <Footer />
+      <Footer like={like} share={share}/>
     </div>
   );
 }
