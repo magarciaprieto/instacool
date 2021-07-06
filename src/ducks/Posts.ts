@@ -6,18 +6,19 @@ const START = 'posts/fetch-start';
 const SUCCESS = 'posts/fetch-success';
 const ERROR = 'posts/fetch-error';
 
-interface IData {
+export interface IDataPosts {
   [key: string]: {
     comment: string
     userId: string
     createdAt: firebase.firestore.Timestamp
+    imageURL: string
   }
 }
 
 const fetchStart = () => ({
   type: START,
 })
-const fetchSuccess = (payload: IData) => ({
+const fetchSuccess = (payload: IDataPosts) => ({
   payload,
   type: SUCCESS,
 })

@@ -17,7 +17,7 @@ interface IPostProps {
 export default function Post ({image}: IPostProps) {
   return (
     <div style={style}>
-      <img src={image} alt='' />
+      <img style={{width: '300px', height: '200px'}} src={image} alt='' />
       <Footer />
     </div>
   );

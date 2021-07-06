@@ -9,6 +9,7 @@ import Post from '../../components/Post'
 import Container from '../../components/Container'
 
 interface INewsFeedProps {
+  data: postsDuck.IDataPosts
   fetchPosts: () => void 
   fetched: boolean
   fetching: boolean
@@ -25,7 +26,7 @@ function NewsFeed ({ data, fetchPosts, fetched, ...props}: INewsFeedProps) {
     <Container>
       {Object.keys(data).map( x => {
         const post = data[x];
-        return <div style={{ margin: '0 auto' }}><Post image='http://placekitten.com/300/200' /></div>
+        return <div key={x} style={{ margin: '0 auto' }}><Post image={post.imageURL} /></div>
       })}
     </Container>
   )
