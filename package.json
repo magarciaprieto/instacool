@@ -54,6 +54,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
+    ],
+    "proxy": "http://localhost:5000/instacool-435c8/us-central1"
   }
 }

@@ -91,6 +91,7 @@ export const fetchPosts = () =>
   export const like = (id: string) =>
     async (dispatch: Dispatch, getState: () => any, { db }: IServices) => {
       console.log(id)
+      await fetch('/api/posts');
     }
 
   export const share = (id: string) =>
