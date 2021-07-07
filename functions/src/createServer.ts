@@ -2,6 +2,10 @@
 import * as express from 'express';
 import * as admin from 'firebase-admin';
 
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+})
+
 const db = admin.firestore();
 const auth = admin.auth();
 
