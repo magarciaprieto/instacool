@@ -21,10 +21,11 @@ const auth = admin.auth();
 export default () => {
   //Definimos primero un middleware de autenticación, donde tenga que pasar una autenticación para determinar si es un usuario normal o un admin. Esto agrega seguridad a la app.
   //El "next" significa que una vez que se haya ejecutado esta función, siga con la siguiente.
+  
   const app = express();
   app.use( async (req, res, next) => {
-    const token: any = req.headers.authorization //Para poder utilizar "req" en toda esta pág, podemos agregarle una propiedad a "req" y así queda
-    //disponible fuera de esta función.
+    const token: any = req.headers.authorization //Para poder utilizar "req" en toda esta pág, podemos agregarle una propiedad a "req" y así queda disponible fuera de esta función.
+
     try {
       const { uid, email } = await auth.verifyIdToken(token)
       const snap = await db.collection('users').doc(uid).get()
@@ -65,5 +66,18 @@ export default () => {
     res.sendStatus(204)
   })
 
+  app.get('/posts/:postId/share', async (req: IRequest, res: any) => {
+    const { uid } = req.user
+    const { postId } = req.params
+    const snap = await db.collection('posts').doc(postId).get()
+    const post = snap.data()
+    const result = await db.collection('posts').add({
+      ...post,
+      userId: uid,
+    })
+
+    res.send({ id: result.id })
+    
+  })
   return app
 }
