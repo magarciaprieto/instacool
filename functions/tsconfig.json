@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "./functions/node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": false, //Set to false to run yarn serve
