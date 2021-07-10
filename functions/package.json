@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
-    "serve": "export GOOGLE_APPLICATION_CREDENTIALS=key.json && npm run build && firebase serve --only functions",
+    "serve": "SET GOOGLE_APPLICATION_CREDENTIALS=key.json && npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",

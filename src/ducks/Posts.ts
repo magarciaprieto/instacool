@@ -89,9 +89,16 @@ export const fetchPosts = () =>
   }
 
   export const like = (id: string) =>
-    async (dispatch: Dispatch, getState: () => any, { db }: IServices) => {
-      console.log(id)
-      await fetch('/api/posts');
+    async (dispatch: Dispatch, getState: () => any, { auth }: IServices) => {
+      if(!auth.currentUser){
+        return
+      }
+      const token = await auth.currentUser.getIdToken()
+      await fetch('/api/posts', {
+        headers: {
+          authorization: token
+        }
+      })
     }
 
   export const share = (id: string) =>

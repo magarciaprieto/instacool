@@ -32,7 +32,7 @@ export default () => {
       res.status(403).send('Authorization error');
     }
   })
-  app.get('/posts', (req, res) => {
+  app.get('/posts/:postId/like', (req, res) => {
     res.send('Hola mundo!')
   })
   return app
