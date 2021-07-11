@@ -8,13 +8,15 @@ const SUCCESS = 'posts/fetch-success';
 const ERROR = 'posts/fetch-error';
 const ADD = 'posts/add'
 
-export interface IDataPosts {
-  [key: string]: {
+export interface IPost {
     comment: string
     userId: string
     createdAt: firebase.firestore.Timestamp
     imageURL: string
   }
+
+export interface IDataPosts {
+  [key: string]: IPost
 }
 
 const fetchStart = () => ({
