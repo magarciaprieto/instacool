@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import * as postsDuck from '../../ducks/Posts'
 import services from "../../services";
 import { chunk } from 'lodash';
+import { submit } from "redux-form";
 
 
 const { auth } = services
@@ -34,8 +35,9 @@ interface IProfileProps {
   fetching: boolean
   like: (a: string) => void
   share: (a: string) => void
+  submitProfileImage: () => void
 }
-function Profile ({data, fetched, fetchPosts, ...props} : IProfileProps) {
+function Profile ({data, submitProfileImage, fetched, fetchPosts, ...props} : IProfileProps) {
 
   if(!fetched) {
     fetchPosts();
@@ -44,7 +46,7 @@ function Profile ({data, fetched, fetchPosts, ...props} : IProfileProps) {
   return (
     <div style={styles.container}>
       <div style={styles.row}>
-        <ProfileImg />
+        <ProfileImg submitProfileImage={submitProfileImage}/ >
         <Button> Agregar </Button>
       </div>  
       {data.map( (x: any, i: any) => 
@@ -72,6 +74,9 @@ const mapStateToProps = (state: any) => {
     loading,
   } 
 }
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => bindActionCreators(postsDuck, dispatch)
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => bindActionCreators({
+  ...postsDuck,
+  submitProfileImage: () => submit('profileImg'),
+ }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
