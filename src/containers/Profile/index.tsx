@@ -36,8 +36,9 @@ interface IProfileProps {
   like: (a: string) => void
   share: (a: string) => void
   submitProfileImage: () => void
+  handleProfileImageSubmit: (a: { file: File }) => void
 }
-function Profile ({data, submitProfileImage, fetched, fetchPosts, ...props} : IProfileProps) {
+function Profile ({data, submitProfileImage, handleProfileImageSubmit, fetched, fetchPosts, ...props} : IProfileProps) {
 
   if(!fetched) {
     fetchPosts();
@@ -46,7 +47,7 @@ function Profile ({data, submitProfileImage, fetched, fetchPosts, ...props} : IP
   return (
     <div style={styles.container}>
       <div style={styles.row}>
-        <ProfileImg submitProfileImage={submitProfileImage}/ >
+        <ProfileImg onSubmit={handleProfileImageSubmit} submitProfileImage={submitProfileImage}/ >
         <Button> Agregar </Button>
       </div>  
       {data.map( (x: any, i: any) => 

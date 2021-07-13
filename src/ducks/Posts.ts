@@ -141,4 +141,9 @@ export const fetchPosts = () =>
     } } as IDataPosts))
 
   }
+
+  export const handleProfileImageSubmit = (payload: { file: File }) =>
+    (dispatch: Dispatch, getState: () => any, { auth }: IServices) => {
+      console.log(payload)
+    }
  
